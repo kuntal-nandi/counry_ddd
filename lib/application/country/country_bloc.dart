@@ -28,10 +28,10 @@ class CountryBloc extends Bloc<CountryEvent, CountryState> {
         fetch: (_Fetch e) async {
           emit(
             state.copyWith(
-              isFetching: true,
-              countriesList: [],
-              failureOrSuccessOption: none(),
-            ),
+                isFetching: true,
+                countriesList: [],
+                failureOrSuccessOption: none(),
+                languageList: []),
           );
           final failureOrSuccess = await repository.getCountriesList();
           await failureOrSuccess.fold(
@@ -44,10 +44,11 @@ class CountryBloc extends Bloc<CountryEvent, CountryState> {
             (countryList) async {
               emit(
                 state.copyWith(
-                  countriesList: countryList,
-                  failureOrSuccessOption: none(),
-                  isFetching: false,
-                ),
+                countriesList: countryList,
+                failureOrSuccessOption: none(),
+                isFetching: false,
+                languageList: getAllLanguages(countryList),
+              )
               );
             },
           );
@@ -102,5 +103,21 @@ class CountryBloc extends Bloc<CountryEvent, CountryState> {
             );
           }
         });
+  }
+}
+
+List<String> getAllLanguages(List<Country> countries) {
+  List<String> allL = [];
+  if (countries.isNotEmpty) {
+    for (var element in countries) {
+      for (var element in element.languages) {
+        allL.add(element.name);
+      }
+    }
+    Set<String> set = Set<String>.from(allL);
+    List<String> allLanguages = List<String>.from(set);
+    return allLanguages;
+  } else {
+    return allL;
   }
 }

@@ -30,11 +30,15 @@ class CountryTile extends StatelessWidget {
                         color: Colors.black),
               ),
               const SizedBox(width: 10,),
-              Text(countryName,
-                    style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black),
+                  SizedBox(
+                    width: 200,
+                    child: Text(
+                      countryName,
+                      style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black),
+                    ),
               ),
                  ],
                ),

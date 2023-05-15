@@ -435,6 +435,7 @@ abstract class _Filter implements CountryEvent {
 mixin _$CountryState {
   List<Country> get countriesList => throw _privateConstructorUsedError;
   bool get isFetching => throw _privateConstructorUsedError;
+  List<String> get languageList => throw _privateConstructorUsedError;
   Option<Either<ApiFailure, dynamic>> get failureOrSuccessOption =>
       throw _privateConstructorUsedError;
 
@@ -452,6 +453,7 @@ abstract class $CountryStateCopyWith<$Res> {
   $Res call(
       {List<Country> countriesList,
       bool isFetching,
+      List<String> languageList,
       Option<Either<ApiFailure, dynamic>> failureOrSuccessOption});
 }
 
@@ -470,6 +472,7 @@ class _$CountryStateCopyWithImpl<$Res, $Val extends CountryState>
   $Res call({
     Object? countriesList = null,
     Object? isFetching = null,
+    Object? languageList = null,
     Object? failureOrSuccessOption = null,
   }) {
     return _then(_value.copyWith(
@@ -481,6 +484,10 @@ class _$CountryStateCopyWithImpl<$Res, $Val extends CountryState>
           ? _value.isFetching
           : isFetching // ignore: cast_nullable_to_non_nullable
               as bool,
+      languageList: null == languageList
+          ? _value.languageList
+          : languageList // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       failureOrSuccessOption: null == failureOrSuccessOption
           ? _value.failureOrSuccessOption
           : failureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -500,6 +507,7 @@ abstract class _$$_CountryStateCopyWith<$Res>
   $Res call(
       {List<Country> countriesList,
       bool isFetching,
+      List<String> languageList,
       Option<Either<ApiFailure, dynamic>> failureOrSuccessOption});
 }
 
@@ -516,6 +524,7 @@ class __$$_CountryStateCopyWithImpl<$Res>
   $Res call({
     Object? countriesList = null,
     Object? isFetching = null,
+    Object? languageList = null,
     Object? failureOrSuccessOption = null,
   }) {
     return _then(_$_CountryState(
@@ -527,6 +536,10 @@ class __$$_CountryStateCopyWithImpl<$Res>
           ? _value.isFetching
           : isFetching // ignore: cast_nullable_to_non_nullable
               as bool,
+      languageList: null == languageList
+          ? _value._languageList
+          : languageList // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       failureOrSuccessOption: null == failureOrSuccessOption
           ? _value.failureOrSuccessOption
           : failureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -541,8 +554,10 @@ class _$_CountryState extends _CountryState {
   const _$_CountryState(
       {required final List<Country> countriesList,
       required this.isFetching,
+      required final List<String> languageList,
       required this.failureOrSuccessOption})
       : _countriesList = countriesList,
+        _languageList = languageList,
         super._();
 
   final List<Country> _countriesList;
@@ -555,12 +570,20 @@ class _$_CountryState extends _CountryState {
 
   @override
   final bool isFetching;
+  final List<String> _languageList;
+  @override
+  List<String> get languageList {
+    if (_languageList is EqualUnmodifiableListView) return _languageList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_languageList);
+  }
+
   @override
   final Option<Either<ApiFailure, dynamic>> failureOrSuccessOption;
 
   @override
   String toString() {
-    return 'CountryState(countriesList: $countriesList, isFetching: $isFetching, failureOrSuccessOption: $failureOrSuccessOption)';
+    return 'CountryState(countriesList: $countriesList, isFetching: $isFetching, languageList: $languageList, failureOrSuccessOption: $failureOrSuccessOption)';
   }
 
   @override
@@ -572,6 +595,8 @@ class _$_CountryState extends _CountryState {
                 .equals(other._countriesList, _countriesList) &&
             (identical(other.isFetching, isFetching) ||
                 other.isFetching == isFetching) &&
+            const DeepCollectionEquality()
+                .equals(other._languageList, _languageList) &&
             (identical(other.failureOrSuccessOption, failureOrSuccessOption) ||
                 other.failureOrSuccessOption == failureOrSuccessOption));
   }
@@ -581,6 +606,7 @@ class _$_CountryState extends _CountryState {
       runtimeType,
       const DeepCollectionEquality().hash(_countriesList),
       isFetching,
+      const DeepCollectionEquality().hash(_languageList),
       failureOrSuccessOption);
 
   @JsonKey(ignore: true)
@@ -594,6 +620,7 @@ abstract class _CountryState extends CountryState {
   const factory _CountryState(
       {required final List<Country> countriesList,
       required final bool isFetching,
+      required final List<String> languageList,
       required final Option<Either<ApiFailure, dynamic>>
           failureOrSuccessOption}) = _$_CountryState;
   const _CountryState._() : super._();
@@ -602,6 +629,8 @@ abstract class _CountryState extends CountryState {
   List<Country> get countriesList;
   @override
   bool get isFetching;
+  @override
+  List<String> get languageList;
   @override
   Option<Either<ApiFailure, dynamic>> get failureOrSuccessOption;
   @override

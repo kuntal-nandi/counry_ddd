@@ -67,9 +67,7 @@ class _CountryViewState extends State<CountryView> {
                   width: 6,
                 ),
                 IconButton(
-                    onPressed: () {
-                      
-                    },
+                    onPressed: () {},
                     icon: Icon(
                       Icons.filter_alt_outlined,
                       size: 40,
@@ -130,9 +128,8 @@ class _CountryViewState extends State<CountryView> {
                       itemBuilder: (BuildContext context, int index) {
                         return CountryTile(
                             onTap: () {
-                              AutoRouter.of(context)
-                                  .push(CountryDetailsRoute(
-                                    country: state.countriesList[index]));
+                              AutoRouter.of(context).push(CountryDetailsRoute(
+                                  country: state.countriesList[index]));
                             },
                             countryName: state.countriesList[index].name,
                             code: state.countriesList[index].phone,
@@ -140,7 +137,8 @@ class _CountryViewState extends State<CountryView> {
                       }),
                 );
               } else if (state.isFetching == false &&
-                  state.countriesList.isEmpty && searchController.text.isNotEmpty) {
+                  state.countriesList.isEmpty &&
+                  searchController.text.isNotEmpty) {
                 return Expanded(
                     child: Container(
                         alignment: Alignment.center,

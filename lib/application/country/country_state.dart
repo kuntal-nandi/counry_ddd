@@ -6,11 +6,13 @@ class CountryState with _$CountryState {
   const factory CountryState({
     required List<Country> countriesList,
     required bool isFetching,
+    required List<String> languageList,
     required Option<Either<ApiFailure, dynamic>> failureOrSuccessOption,
   }) = _CountryState;
   factory CountryState.initial() => CountryState(
     countriesList: [],
     isFetching: false,
-    failureOrSuccessOption: none(),
+    failureOrSuccessOption: none(), 
+    languageList: [],
   );
 }
