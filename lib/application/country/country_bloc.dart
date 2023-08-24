@@ -31,6 +31,7 @@ class CountryBloc extends Bloc<CountryEvent, CountryState> {
                 isFetching: true,
                 countriesList: [],
                 failureOrSuccessOption: none(),
+                filteredCountryList: [],
                 languageList: []),
           );
           final failureOrSuccess = await repository.getCountriesList();
@@ -42,14 +43,13 @@ class CountryBloc extends Bloc<CountryEvent, CountryState> {
               ),
             ),
             (countryList) async {
-              emit(
-                state.copyWith(
+              emit(state.copyWith(
                 countriesList: countryList,
+                filteredCountryList: countryList,
                 failureOrSuccessOption: none(),
                 isFetching: false,
                 languageList: getAllLanguages(countryList),
-              )
-              );
+              ));
             },
           );
         },
@@ -58,51 +58,67 @@ class CountryBloc extends Bloc<CountryEvent, CountryState> {
             emit(
               state.copyWith(
                 isFetching: true,
-                countriesList: [],
+                filteredCountryList: [],
                 failureOrSuccessOption: none(),
               ),
             );
-            final failureOrSuccess = await repository.getCountriesList();
-            await failureOrSuccess.fold(
-              (failure) async => emit(
+            if (e.key.isNotEmpty && e.key != '') {
+              List<Country> filteredList = [];
+              filteredList = state.countriesList
+                  .where((element) =>
+                      element.name.toLowerCase().contains(e.key.toLowerCase()))
+                  .toList();
+              emit(
                 state.copyWith(
-                  failureOrSuccessOption: optionOf(failureOrSuccess),
+                  filteredCountryList: filteredList,
+                  failureOrSuccessOption: none(),
                   isFetching: false,
                 ),
+              );
+            }
+            else{
+              emit(
+                state.copyWith(
+                  filteredCountryList: state.countriesList,
+                  failureOrSuccessOption: none(),
+                  isFetching: false,
+                ),
+              );
+            }
+          }
+        }, filterByLanguage: (_FilterByLanguages e) {
+          if(state.isFetching==false){
+            emit(
+              state.copyWith(
+                isFetching: true,
               ),
-              (countryList) async {
-                if (countryList.isNotEmpty) {
-                  List<Country> filteredList = [];
-                  if (e.key.isNotEmpty && e.key != '') {
-                    for (int i = 0; i < countryList.length; i++) {
-                      if (countryList[i]
-                          .name
-                          .toLowerCase()
-                          .contains(e.key.trim().toLowerCase())) {
-                        filteredList.add(countryList[i]);
-                      }
-                    }
-                    emit(
-                      state.copyWith(
-                        countriesList: filteredList,
-                        failureOrSuccessOption: none(),
-                        isFetching: false,
-                      ),
-                    );
-                  } else {
-                    emit(
-                      state.copyWith(
-                        countriesList: countryList,
-                        failureOrSuccessOption: none(),
-                        isFetching: false,
-                      ),
-                    );
+            );
+            if(e.searchLanguages.isNotEmpty){
+              List<Country> filteredList = [];
+              for(var element in state.countriesList){
+                for(var lan in element.languages){
+                  if(e.searchLanguages.contains(lan.name)){
+                    filteredList.add(element);
                   }
                 }
-              },
-            );
+              }
+              emit(
+                state.copyWith(
+                  filteredCountryList: filteredList,
+                  isFetching: false
+                ),
+              );
+            }
+            else{
+              emit(
+                state.copyWith(
+                    isFetching: false
+                ),
+              );
+            }
           }
-        });
+
+    });
   }
 }
 

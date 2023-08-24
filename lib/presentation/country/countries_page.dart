@@ -15,16 +15,147 @@ class CountryView extends StatefulWidget {
 
 class _CountryViewState extends State<CountryView> {
   TextEditingController searchController = TextEditingController();
+
   @override
   void initState() {
     BlocProvider.of<CountryBloc>(context).add(const CountryEvent.fetch());
     super.initState();
   }
 
+  List<String> selectedLanguages = [];
   @override
   Widget build(BuildContext context) {
     final countryBloc = context.watch<CountryBloc>();
     final countryState = countryBloc.state;
+    languageListDialog(BuildContext context) {
+      return showModalBottomSheet<void>(
+        context: context,
+        builder: (BuildContext context) {
+          return StatefulBuilder(builder: (context, setState) {
+            return BlocBuilder<CountryBloc, CountryState>(
+              buildWhen: (previous, current) =>
+                  previous.isFetching != current.isFetching ||
+                  previous.languageList != current.languageList,
+              builder: (context, state) {
+                if (state.isFetching) {
+                  return Container(
+                      alignment: Alignment.center,
+                      height: 600,
+                      child: const Center(
+                        child: CircularProgressIndicator(
+                          color: Colors.blueAccent,
+                        ),
+                      ));
+                }
+                if (!state.isFetching && state.languageList.isNotEmpty) {
+                  return Container(
+                    height: 600,
+                    padding: const EdgeInsets.all(10),
+                    child: Column(
+                      children: [
+                        const Text(
+                          'Languages List',
+                          style: TextStyle(
+                              fontSize: 22, fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Expanded(
+                          child: ListView.builder(
+                              itemCount: state.languageList.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return CheckboxListTile(
+                                  value: selectedLanguages
+                                      .contains(state.languageList[index]),
+                                  onChanged: (bool? value) {
+                                    if (value == true) {
+                                      setState(() {
+                                        selectedLanguages
+                                            .add(state.languageList[index]);
+                                      });
+                                    } else {
+                                      setState((){
+                                        selectedLanguages
+                                            .remove(state.languageList[index]);
+                                      });
+                                    }
+                                  },
+                                  title: Text(
+                                    state.languageList[index],
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.w700),
+                                  ),
+                                );
+                              }),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10, right: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              SizedBox(
+                                width: 150,
+                                child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.white,
+                                      side: const BorderSide(
+                                          width: 2.0, color: Colors.blue),
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        selectedLanguages = [];
+                                      });
+                                    },
+                                    child: const Text(
+                                      'Reset Filter',
+                                      style: TextStyle(color: Colors.blue),
+                                    )),
+                              ),
+                              SizedBox(
+                                width: 150,
+                                child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.blue),
+                                    onPressed: () {
+                                      setState(() {
+                                        countryBloc.add(
+                                            CountryEvent.filterByLanguage(
+                                                searchLanguages:
+                                                    selectedLanguages));
+                                        selectedLanguages = [];
+                                        Navigator.pop(context);
+                                      });
+                                    },
+                                    child: const Text(
+                                      'Apply Filter',
+                                      style: TextStyle(color: Colors.white),
+                                    )),
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  );
+                }
+                return Container(
+                  height: 600,
+                  padding: const EdgeInsets.all(16),
+                  child: const Center(
+                    child: Text('No languages to filter data'),
+                  ),
+                );
+              },
+            );
+          });
+        },
+      );
+    }
+
     return Scaffold(
       body: Column(
         children: [
@@ -67,9 +198,11 @@ class _CountryViewState extends State<CountryView> {
                   width: 6,
                 ),
                 IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      languageListDialog(context);
+                    },
                     icon: Icon(
-                      Icons.filter_alt_outlined,
+                      Icons.filter_list_sharp,
                       size: 40,
                       color: Colors.blue.shade900,
                     )),
@@ -107,7 +240,7 @@ class _CountryViewState extends State<CountryView> {
             ),
             buildWhen: (previous, current) =>
                 previous.isFetching != current.isFetching ||
-                previous.countriesList != current.countriesList,
+                previous.filteredCountryList != current.filteredCountryList,
             builder: (context, state) {
               if (state.isFetching) {
                 return Expanded(
@@ -119,25 +252,25 @@ class _CountryViewState extends State<CountryView> {
                           color: Colors.blueAccent,
                         )));
               } else if (state.isFetching == false &&
-                  state.countriesList.isNotEmpty) {
+                  state.filteredCountryList.isNotEmpty) {
                 return Expanded(
                   child: ListView.builder(
                       shrinkWrap: true,
                       padding: const EdgeInsets.only(top: 10),
-                      itemCount: state.countriesList.length,
+                      itemCount: state.filteredCountryList.length,
                       itemBuilder: (BuildContext context, int index) {
                         return CountryTile(
                             onTap: () {
                               AutoRouter.of(context).push(CountryDetailsRoute(
-                                  country: state.countriesList[index]));
+                                  country: state.filteredCountryList[index]));
                             },
-                            countryName: state.countriesList[index].name,
-                            code: state.countriesList[index].phone,
-                            flag: state.countriesList[index].emoji);
+                            countryName: state.filteredCountryList[index].name,
+                            code: state.filteredCountryList[index].phone,
+                            flag: state.filteredCountryList[index].emoji);
                       }),
                 );
               } else if (state.isFetching == false &&
-                  state.countriesList.isEmpty &&
+                  state.filteredCountryList.isEmpty &&
                   searchController.text.isNotEmpty) {
                 return Expanded(
                     child: Container(

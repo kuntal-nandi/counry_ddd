@@ -21,6 +21,7 @@ mixin _$CountryEvent {
     required TResult Function() initialized,
     required TResult Function() fetch,
     required TResult Function(String key) filter,
+    required TResult Function(List<String> searchLanguages) filterByLanguage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$CountryEvent {
     TResult? Function()? initialized,
     TResult? Function()? fetch,
     TResult? Function(String key)? filter,
+    TResult? Function(List<String> searchLanguages)? filterByLanguage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$CountryEvent {
     TResult Function()? initialized,
     TResult Function()? fetch,
     TResult Function(String key)? filter,
+    TResult Function(List<String> searchLanguages)? filterByLanguage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$CountryEvent {
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_Filter value) filter,
+    required TResult Function(_FilterByLanguages value) filterByLanguage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$CountryEvent {
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_Filter value)? filter,
+    TResult? Function(_FilterByLanguages value)? filterByLanguage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$CountryEvent {
     TResult Function(_Initialized value)? initialized,
     TResult Function(_Fetch value)? fetch,
     TResult Function(_Filter value)? filter,
+    TResult Function(_FilterByLanguages value)? filterByLanguage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -121,6 +127,7 @@ class _$_Initialized implements _Initialized {
     required TResult Function() initialized,
     required TResult Function() fetch,
     required TResult Function(String key) filter,
+    required TResult Function(List<String> searchLanguages) filterByLanguage,
   }) {
     return initialized();
   }
@@ -131,6 +138,7 @@ class _$_Initialized implements _Initialized {
     TResult? Function()? initialized,
     TResult? Function()? fetch,
     TResult? Function(String key)? filter,
+    TResult? Function(List<String> searchLanguages)? filterByLanguage,
   }) {
     return initialized?.call();
   }
@@ -141,6 +149,7 @@ class _$_Initialized implements _Initialized {
     TResult Function()? initialized,
     TResult Function()? fetch,
     TResult Function(String key)? filter,
+    TResult Function(List<String> searchLanguages)? filterByLanguage,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -155,6 +164,7 @@ class _$_Initialized implements _Initialized {
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_Filter value) filter,
+    required TResult Function(_FilterByLanguages value) filterByLanguage,
   }) {
     return initialized(this);
   }
@@ -165,6 +175,7 @@ class _$_Initialized implements _Initialized {
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_Filter value)? filter,
+    TResult? Function(_FilterByLanguages value)? filterByLanguage,
   }) {
     return initialized?.call(this);
   }
@@ -175,6 +186,7 @@ class _$_Initialized implements _Initialized {
     TResult Function(_Initialized value)? initialized,
     TResult Function(_Fetch value)? fetch,
     TResult Function(_Filter value)? filter,
+    TResult Function(_FilterByLanguages value)? filterByLanguage,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -227,6 +239,7 @@ class _$_Fetch implements _Fetch {
     required TResult Function() initialized,
     required TResult Function() fetch,
     required TResult Function(String key) filter,
+    required TResult Function(List<String> searchLanguages) filterByLanguage,
   }) {
     return fetch();
   }
@@ -237,6 +250,7 @@ class _$_Fetch implements _Fetch {
     TResult? Function()? initialized,
     TResult? Function()? fetch,
     TResult? Function(String key)? filter,
+    TResult? Function(List<String> searchLanguages)? filterByLanguage,
   }) {
     return fetch?.call();
   }
@@ -247,6 +261,7 @@ class _$_Fetch implements _Fetch {
     TResult Function()? initialized,
     TResult Function()? fetch,
     TResult Function(String key)? filter,
+    TResult Function(List<String> searchLanguages)? filterByLanguage,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -261,6 +276,7 @@ class _$_Fetch implements _Fetch {
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_Filter value) filter,
+    required TResult Function(_FilterByLanguages value) filterByLanguage,
   }) {
     return fetch(this);
   }
@@ -271,6 +287,7 @@ class _$_Fetch implements _Fetch {
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_Filter value)? filter,
+    TResult? Function(_FilterByLanguages value)? filterByLanguage,
   }) {
     return fetch?.call(this);
   }
@@ -281,6 +298,7 @@ class _$_Fetch implements _Fetch {
     TResult Function(_Initialized value)? initialized,
     TResult Function(_Fetch value)? fetch,
     TResult Function(_Filter value)? filter,
+    TResult Function(_FilterByLanguages value)? filterByLanguage,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -359,6 +377,7 @@ class _$_Filter implements _Filter {
     required TResult Function() initialized,
     required TResult Function() fetch,
     required TResult Function(String key) filter,
+    required TResult Function(List<String> searchLanguages) filterByLanguage,
   }) {
     return filter(key);
   }
@@ -369,6 +388,7 @@ class _$_Filter implements _Filter {
     TResult? Function()? initialized,
     TResult? Function()? fetch,
     TResult? Function(String key)? filter,
+    TResult? Function(List<String> searchLanguages)? filterByLanguage,
   }) {
     return filter?.call(key);
   }
@@ -379,6 +399,7 @@ class _$_Filter implements _Filter {
     TResult Function()? initialized,
     TResult Function()? fetch,
     TResult Function(String key)? filter,
+    TResult Function(List<String> searchLanguages)? filterByLanguage,
     required TResult orElse(),
   }) {
     if (filter != null) {
@@ -393,6 +414,7 @@ class _$_Filter implements _Filter {
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_Filter value) filter,
+    required TResult Function(_FilterByLanguages value) filterByLanguage,
   }) {
     return filter(this);
   }
@@ -403,6 +425,7 @@ class _$_Filter implements _Filter {
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_Filter value)? filter,
+    TResult? Function(_FilterByLanguages value)? filterByLanguage,
   }) {
     return filter?.call(this);
   }
@@ -413,6 +436,7 @@ class _$_Filter implements _Filter {
     TResult Function(_Initialized value)? initialized,
     TResult Function(_Fetch value)? fetch,
     TResult Function(_Filter value)? filter,
+    TResult Function(_FilterByLanguages value)? filterByLanguage,
     required TResult orElse(),
   }) {
     if (filter != null) {
@@ -432,8 +456,164 @@ abstract class _Filter implements CountryEvent {
 }
 
 /// @nodoc
+abstract class _$$_FilterByLanguagesCopyWith<$Res> {
+  factory _$$_FilterByLanguagesCopyWith(_$_FilterByLanguages value,
+          $Res Function(_$_FilterByLanguages) then) =
+      __$$_FilterByLanguagesCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<String> searchLanguages});
+}
+
+/// @nodoc
+class __$$_FilterByLanguagesCopyWithImpl<$Res>
+    extends _$CountryEventCopyWithImpl<$Res, _$_FilterByLanguages>
+    implements _$$_FilterByLanguagesCopyWith<$Res> {
+  __$$_FilterByLanguagesCopyWithImpl(
+      _$_FilterByLanguages _value, $Res Function(_$_FilterByLanguages) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? searchLanguages = null,
+  }) {
+    return _then(_$_FilterByLanguages(
+      searchLanguages: null == searchLanguages
+          ? _value._searchLanguages
+          : searchLanguages // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_FilterByLanguages implements _FilterByLanguages {
+  const _$_FilterByLanguages({required final List<String> searchLanguages})
+      : _searchLanguages = searchLanguages;
+
+  final List<String> _searchLanguages;
+  @override
+  List<String> get searchLanguages {
+    if (_searchLanguages is EqualUnmodifiableListView) return _searchLanguages;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_searchLanguages);
+  }
+
+  @override
+  String toString() {
+    return 'CountryEvent.filterByLanguage(searchLanguages: $searchLanguages)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FilterByLanguages &&
+            const DeepCollectionEquality()
+                .equals(other._searchLanguages, _searchLanguages));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_searchLanguages));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_FilterByLanguagesCopyWith<_$_FilterByLanguages> get copyWith =>
+      __$$_FilterByLanguagesCopyWithImpl<_$_FilterByLanguages>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function() fetch,
+    required TResult Function(String key) filter,
+    required TResult Function(List<String> searchLanguages) filterByLanguage,
+  }) {
+    return filterByLanguage(searchLanguages);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function()? fetch,
+    TResult? Function(String key)? filter,
+    TResult? Function(List<String> searchLanguages)? filterByLanguage,
+  }) {
+    return filterByLanguage?.call(searchLanguages);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function()? fetch,
+    TResult Function(String key)? filter,
+    TResult Function(List<String> searchLanguages)? filterByLanguage,
+    required TResult orElse(),
+  }) {
+    if (filterByLanguage != null) {
+      return filterByLanguage(searchLanguages);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_Filter value) filter,
+    required TResult Function(_FilterByLanguages value) filterByLanguage,
+  }) {
+    return filterByLanguage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_Filter value)? filter,
+    TResult? Function(_FilterByLanguages value)? filterByLanguage,
+  }) {
+    return filterByLanguage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_Filter value)? filter,
+    TResult Function(_FilterByLanguages value)? filterByLanguage,
+    required TResult orElse(),
+  }) {
+    if (filterByLanguage != null) {
+      return filterByLanguage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FilterByLanguages implements CountryEvent {
+  const factory _FilterByLanguages(
+      {required final List<String> searchLanguages}) = _$_FilterByLanguages;
+
+  List<String> get searchLanguages;
+  @JsonKey(ignore: true)
+  _$$_FilterByLanguagesCopyWith<_$_FilterByLanguages> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$CountryState {
   List<Country> get countriesList => throw _privateConstructorUsedError;
+  List<Country> get filteredCountryList => throw _privateConstructorUsedError;
   bool get isFetching => throw _privateConstructorUsedError;
   List<String> get languageList => throw _privateConstructorUsedError;
   Option<Either<ApiFailure, dynamic>> get failureOrSuccessOption =>
@@ -452,6 +632,7 @@ abstract class $CountryStateCopyWith<$Res> {
   @useResult
   $Res call(
       {List<Country> countriesList,
+      List<Country> filteredCountryList,
       bool isFetching,
       List<String> languageList,
       Option<Either<ApiFailure, dynamic>> failureOrSuccessOption});
@@ -471,6 +652,7 @@ class _$CountryStateCopyWithImpl<$Res, $Val extends CountryState>
   @override
   $Res call({
     Object? countriesList = null,
+    Object? filteredCountryList = null,
     Object? isFetching = null,
     Object? languageList = null,
     Object? failureOrSuccessOption = null,
@@ -479,6 +661,10 @@ class _$CountryStateCopyWithImpl<$Res, $Val extends CountryState>
       countriesList: null == countriesList
           ? _value.countriesList
           : countriesList // ignore: cast_nullable_to_non_nullable
+              as List<Country>,
+      filteredCountryList: null == filteredCountryList
+          ? _value.filteredCountryList
+          : filteredCountryList // ignore: cast_nullable_to_non_nullable
               as List<Country>,
       isFetching: null == isFetching
           ? _value.isFetching
@@ -506,6 +692,7 @@ abstract class _$$_CountryStateCopyWith<$Res>
   @useResult
   $Res call(
       {List<Country> countriesList,
+      List<Country> filteredCountryList,
       bool isFetching,
       List<String> languageList,
       Option<Either<ApiFailure, dynamic>> failureOrSuccessOption});
@@ -523,6 +710,7 @@ class __$$_CountryStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? countriesList = null,
+    Object? filteredCountryList = null,
     Object? isFetching = null,
     Object? languageList = null,
     Object? failureOrSuccessOption = null,
@@ -531,6 +719,10 @@ class __$$_CountryStateCopyWithImpl<$Res>
       countriesList: null == countriesList
           ? _value._countriesList
           : countriesList // ignore: cast_nullable_to_non_nullable
+              as List<Country>,
+      filteredCountryList: null == filteredCountryList
+          ? _value._filteredCountryList
+          : filteredCountryList // ignore: cast_nullable_to_non_nullable
               as List<Country>,
       isFetching: null == isFetching
           ? _value.isFetching
@@ -553,10 +745,12 @@ class __$$_CountryStateCopyWithImpl<$Res>
 class _$_CountryState extends _CountryState {
   const _$_CountryState(
       {required final List<Country> countriesList,
+      required final List<Country> filteredCountryList,
       required this.isFetching,
       required final List<String> languageList,
       required this.failureOrSuccessOption})
       : _countriesList = countriesList,
+        _filteredCountryList = filteredCountryList,
         _languageList = languageList,
         super._();
 
@@ -566,6 +760,15 @@ class _$_CountryState extends _CountryState {
     if (_countriesList is EqualUnmodifiableListView) return _countriesList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_countriesList);
+  }
+
+  final List<Country> _filteredCountryList;
+  @override
+  List<Country> get filteredCountryList {
+    if (_filteredCountryList is EqualUnmodifiableListView)
+      return _filteredCountryList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_filteredCountryList);
   }
 
   @override
@@ -583,7 +786,7 @@ class _$_CountryState extends _CountryState {
 
   @override
   String toString() {
-    return 'CountryState(countriesList: $countriesList, isFetching: $isFetching, languageList: $languageList, failureOrSuccessOption: $failureOrSuccessOption)';
+    return 'CountryState(countriesList: $countriesList, filteredCountryList: $filteredCountryList, isFetching: $isFetching, languageList: $languageList, failureOrSuccessOption: $failureOrSuccessOption)';
   }
 
   @override
@@ -593,6 +796,8 @@ class _$_CountryState extends _CountryState {
             other is _$_CountryState &&
             const DeepCollectionEquality()
                 .equals(other._countriesList, _countriesList) &&
+            const DeepCollectionEquality()
+                .equals(other._filteredCountryList, _filteredCountryList) &&
             (identical(other.isFetching, isFetching) ||
                 other.isFetching == isFetching) &&
             const DeepCollectionEquality()
@@ -605,6 +810,7 @@ class _$_CountryState extends _CountryState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_countriesList),
+      const DeepCollectionEquality().hash(_filteredCountryList),
       isFetching,
       const DeepCollectionEquality().hash(_languageList),
       failureOrSuccessOption);
@@ -619,6 +825,7 @@ class _$_CountryState extends _CountryState {
 abstract class _CountryState extends CountryState {
   const factory _CountryState(
       {required final List<Country> countriesList,
+      required final List<Country> filteredCountryList,
       required final bool isFetching,
       required final List<String> languageList,
       required final Option<Either<ApiFailure, dynamic>>
@@ -627,6 +834,8 @@ abstract class _CountryState extends CountryState {
 
   @override
   List<Country> get countriesList;
+  @override
+  List<Country> get filteredCountryList;
   @override
   bool get isFetching;
   @override

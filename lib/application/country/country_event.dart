@@ -5,4 +5,5 @@ class CountryEvent with _$CountryEvent {
   const factory CountryEvent.initialized() = _Initialized;
   const factory CountryEvent.fetch() = _Fetch;
   const factory CountryEvent.filter({required String key}) = _Filter;
+  const factory CountryEvent.filterByLanguage({required List<String> searchLanguages}) = _FilterByLanguages;
 }
